@@ -1,11 +1,12 @@
-import LatestMeals from "../components/LatestMeals";
 import RandomMeals from "../components/RandomMeals";
+import Navbar from "../components/Navbar";
 
 function Homepage() {
   return (
     <div>
+      <Navbar />
       <RandomMeals />
-      <LatestMeals />
+      {/* <PopularMeals /> */}
     </div>
   );
 }
