@@ -4,6 +4,7 @@ import "@splidejs/react-splide/css";
 import RandomMealCard from "./RandomMealCard";
 import MealThumbnail from "./MealThumbnail";
 import MealDetails from "./MealDetails";
+import { Link } from "react-router-dom";
 
 function RandomMeals() {
   const [random, setRandom] = useState([]);
@@ -14,32 +15,25 @@ function RandomMeals() {
 
   const fetchRandomMeals = async () => {
     try {
-      const check = localStorage.getItem("popular");
-      if (check) {
-        setRandom(JSON.parse(check));
-      } else {
-        const responses = await Promise.all(
-          Array.from({ length: 9 }, () =>
-            fetch("https://www.themealdb.com/api/json/v1/1/random.php")
-          )
-        );
+      const responses = await Promise.all(
+        Array.from({ length: 9 }, () =>
+          fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+        )
+      );
 
-        const mealData = await Promise.all(
-          responses.map((response) => response.json())
-        );
+      const mealData = await Promise.all(
+        responses.map((response) => response.json())
+      );
 
-        const flattenedMeals = mealData.flatMap((data) => data.meals);
+      const flattenedMeals = mealData.flatMap((data) => data.meals);
 
-        const uniqueMeals = Array.from(
-          new Set(flattenedMeals.map((meal) => meal.idMeal))
-        ).map((id) => {
-          return flattenedMeals.find((meal) => meal.idMeal === id);
-        });
+      const uniqueMeals = Array.from(
+        new Set(flattenedMeals.map((meal) => meal.idMeal))
+      ).map((id) => {
+        return flattenedMeals.find((meal) => meal.idMeal === id);
+      });
 
-        setRandom(uniqueMeals);
-
-        localStorage.setItem("popular", JSON.stringify(uniqueMeals));
-      }
+      setRandom(uniqueMeals);
     } catch (error) {
       console.error("Error fetching random meals:", error);
     }
@@ -67,10 +61,12 @@ function RandomMeals() {
       <div className="row gap-4 mt-5 d-flex justify-content-center">
         {random.map((recipe) => (
           <div key={recipe.idMeal} className="col-3">
-            <div className="d-flex gap-3">
-              <MealThumbnail recipe={recipe} />
-              <MealDetails recipe={recipe} />
-            </div>
+            <Link to={`/meal/${encodeURIComponent(recipe.idMeal)}`}>
+              <div className="d-flex gap-3">
+                <MealThumbnail recipe={recipe} />
+                <MealDetails recipe={recipe} />
+              </div>
+            </Link>
           </div>
         ))}
       </div>
