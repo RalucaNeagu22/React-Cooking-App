@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
-import RandomMealCard from "./RandomMealCard";
-import MealThumbnail from "./MealThumbnail";
-import MealDetails from "./MealDetails";
-import { Link } from "react-router-dom";
+import LatestMeals from "./LatestMeals";
+import RandomSlider from "./RandomSlider";
 
 function RandomMeals() {
   const [random, setRandom] = useState([]);
@@ -41,35 +37,9 @@ function RandomMeals() {
 
   return (
     <div className="container">
-      <Splide
-        options={{
-          perPage: 3,
-          perMove: 1,
-          pagination: false,
-          arrows: false,
-          drag: "free",
-          gap: "3rem",
-        }}
-      >
-        {random.map((recipe) => (
-          <SplideSlide key={recipe.idMeal}>
-            <RandomMealCard recipe={recipe} />
-          </SplideSlide>
-        ))}
-      </Splide>
-      <p className="fs-1">Latest meals</p>
-      <div className="row gap-4 mt-5 d-flex justify-content-center">
-        {random.map((recipe) => (
-          <div key={recipe.idMeal} className="col-3">
-            <Link to={`/meal/${encodeURIComponent(recipe.idMeal)}`}>
-              <div className="d-flex gap-3">
-                <MealThumbnail recipe={recipe} />
-                <MealDetails recipe={recipe} />
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+      <RandomSlider random={random} />
+
+      <LatestMeals random={random} />
     </div>
   );
 }

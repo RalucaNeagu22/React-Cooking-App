@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 function RandomMealCard({ recipe }) {
   return (
-    <Link to={`/meal/${encodeURIComponent(recipe.idMeal)}`}>
+    <Link
+      to={`/meal/${encodeURIComponent(recipe.idMeal)}`}
+      style={{ color: "inherit", textDecoration: "none" }}
+    >
       <div className="text-center mb-5">
         <img
           src={recipe.strMealThumb}
