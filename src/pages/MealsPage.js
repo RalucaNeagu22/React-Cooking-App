@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Categories from "../components/Categories";
 import { Link } from "react-router-dom";
+import FilterBar from "../components/FilterBar";
 
 function MealsPage() {
   const { category } = useParams();
@@ -38,7 +38,7 @@ function MealsPage() {
     <div>
       <Navbar />
       <div className="d-flex">
-        <Categories />
+        <FilterBar />
         <h2>{category}</h2>
         <div className="container row">
           {meals ? (

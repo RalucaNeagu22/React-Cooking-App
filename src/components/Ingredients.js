@@ -1,23 +1,23 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
-function Categories() {
-  const [categories, setCategories] = useState([]);
-  const categoriesRef = useRef();
+function Ingredients() {
+  const [ingredients, setIngredients] = useState([]);
+  const ingredientsRef = useRef();
 
   useEffect(() => {
-    fetchCategories();
+    fetchIngredients();
   }, []);
 
-  const fetchCategories = async () => {
+  const fetchIngredients = async () => {
     try {
       const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/categories.php"
+        "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
       );
       const data = await response.json();
-      setCategories(data.categories);
+      setIngredients(data.meals);
     } catch (error) {
-      console.error("Error fetching categories:", error);
+      console.error("Error fetching ingredients:", error);
     }
   };
 
@@ -25,22 +25,24 @@ function Categories() {
     <div>
       <div className="btn-group">
         <button
-          ref={categoriesRef}
+          ref={ingredientsRef}
           className="btn btn-secondary btn-lg dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Categories
+          Ingredients
         </button>
         <ul className="dropdown-menu">
-          {categories.map((category) => (
-            <li key={category.idCategory}>
+          {ingredients.map((ingredient) => (
+            <li key={ingredient.idIngredient}>
               <Link
-                to={`/meals/${encodeURIComponent(category.strCategory)}`}
+                to={`/meals/ingredients/${encodeURIComponent(
+                  ingredient.strIngredient
+                )}`}
                 className="dropdown-item"
               >
-                {category.strCategory}
+                {ingredient.strIngredient}
               </Link>
             </li>
           ))}
@@ -50,4 +52,4 @@ function Categories() {
   );
 }
 
-export default Categories;
+export default Ingredients;

@@ -51,7 +51,11 @@ function Navbar({ setSearchResults }) {
               </div>
             </Link>
             <div className="col-auto">
-              <form onChange={handleSearch} className="mb-3 mb-lg-0">
+              <form
+                onChange={handleSearch}
+                onSubmit={handleSearch}
+                className="mb-3 mb-lg-0"
+              >
                 <label htmlFor="search" className="visually-hidden">
                   Search
                 </label>

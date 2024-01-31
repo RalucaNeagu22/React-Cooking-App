@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Categories from "../components/Categories";
+import FilterBar from "../components/FilterBar";
+import YouTube from "react-youtube";
 
 function MealPage() {
   const { idMeal } = useParams();
@@ -33,36 +34,50 @@ function MealPage() {
   return (
     <div>
       <Navbar />
-      <div className="d-flex">
-        <Categories />
-        <div className="container row">
+      <div className="d-flex mx-5 gap-5">
+        <FilterBar />
+        <div className="container mb-5">
           {meal && (
-            <div className="col-3 d-flex flex-column gap-2">
-              <h2>{meal.strMeal}</h2>
-              <img
-                src={meal.strMealThumb}
-                alt={meal.strMeal}
-                className="d-flex align-items-end"
-                style={{ width: "200px" }}
-              />
-              <p>{meal.strInstructions}</p>
-              <p>{meal.strCategory}</p>
-              <p>{meal.strArea}</p>
-              <p>Ingredients:</p>
-              <ul>
-                {Object.keys(meal)
-                  .filter((key) => key.startsWith("strIngredient"))
-                  .map(
-                    (ingredientKey, index) =>
-                      meal[ingredientKey] && (
-                        <li key={index}>
-                          {`${meal[ingredientKey]}: ${
-                            meal[`strMeasure${ingredientKey.slice(-1)}`]
-                          }`}
-                        </li>
-                      )
+            <div className="d-flex flex-column gap-4">
+              <div className="d-flex flex-row gap-5 mb-5">
+                <div>
+                  <h2>{meal.strMeal}</h2>
+                  <div className="d-flex gap-4">
+                    <p className="fw-bold">{meal.strCategory}</p>
+                    <p className="fw-bold">{meal.strArea}</p>
+                  </div>
+                  <img
+                    src={meal.strMealThumb}
+                    alt={meal.strMeal}
+                    className="d-flex align-items-end"
+                    style={{ maxWidth: "300px" }}
+                  />
+                </div>
+
+                <div className="d-flex flex-column align-self-end">
+                  {meal.strYoutube && (
+                    <YouTube videoId={meal.strYoutube.split("v=")[1]} />
                   )}
-              </ul>
+                </div>
+              </div>
+              <div className="d-flex flex-column justify-content-center">
+                <p className="fw-semibold">Ingredients:</p>
+                <ul>
+                  {Object.keys(meal)
+                    .filter((key) => key.startsWith("strIngredient"))
+                    .map(
+                      (ingredientKey, index) =>
+                        meal[ingredientKey] && (
+                          <li key={index}>
+                            {`${meal[ingredientKey]}: ${
+                              meal[`strMeasure${ingredientKey.slice(-1)}`]
+                            }`}
+                          </li>
+                        )
+                    )}
+                </ul>
+              </div>
+              <p className="fs-5">{meal.strInstructions}</p>
             </div>
           )}
         </div>
