@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import logo from "../assets/img/logo.jpg";
 import { Link } from "react-router-dom";
-import SearchResults from "./SearchResults";
 
-function Navbar() {
+function Navbar({ setSearchResults }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
 
   const searchMealByName = async (mealName) => {
     try {
@@ -72,10 +70,6 @@ function Navbar() {
           </div>
         </div>
       </div>
-
-      {searchResults.length > 0 && (
-        <SearchResults searchResults={searchResults} />
-      )}
     </div>
   );
 }

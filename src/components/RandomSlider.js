@@ -1,9 +1,9 @@
 import React from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import RandomMealCard from "./RandomMealCard";
+import MealCard from "./RandomMealCard";
 
-function RandomSlider({ random }) {
+function RandomSlider({ meals: meals }) {
   return (
     <Splide
       options={{
@@ -15,9 +15,9 @@ function RandomSlider({ random }) {
         gap: "3rem",
       }}
     >
-      {random.map((recipe) => (
+      {meals.map((recipe) => (
         <SplideSlide key={recipe.idMeal}>
-          <RandomMealCard recipe={recipe} />
+          <MealCard recipe={recipe} />
         </SplideSlide>
       ))}
     </Splide>
