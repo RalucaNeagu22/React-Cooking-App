@@ -1,6 +1,7 @@
 import Categories from "./Categories";
 import Areas from "./Areas";
 import Ingredients from "./Ingredients";
+import Favorites from "./Favorites";
 
 import React from "react";
 
@@ -11,6 +12,7 @@ function FilterBar() {
         <Categories />
         <Areas />
         <Ingredients />
+        <Favorites />
       </div>
     </div>
   );

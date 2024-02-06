@@ -17,11 +17,6 @@ const heartIconStyle = {
   marginRight: "5px",
 };
 
-const handleClick = () => {
-  // Handle button click logic
-  console.log("Button clicked!");
-};
-
 function MealPage() {
   const { idMeal } = useParams();
   const [meal, setMeal] = useState(null);
@@ -46,6 +41,26 @@ function MealPage() {
       }
     } catch (error) {
       console.error("Error fetching meal by id:", error);
+    }
+  };
+
+  const handleClick = () => {
+    if (meal) {
+      const { idMeal, strMeal, strMealThumb } = meal;
+      const favoritesFromStorage =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+      const isMealInFavorites = favoritesFromStorage.some(
+        (favorite) => favorite.idMeal === meal.idMeal
+      );
+
+      if (!isMealInFavorites) {
+        const updatedFavorites = [
+          ...favoritesFromStorage,
+          { idMeal, strMeal, strMealThumb },
+        ];
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      }
     }
   };
 

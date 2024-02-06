@@ -6,6 +6,7 @@ import MealsPage from "./MealsPage";
 import MealPage from "./MealPage";
 import IngredientsPage from "./IngredientsPage";
 import AreasPage from "./AreasPage";
+import FavoritesPage from "./FavoritesPage";
 
 function Pages() {
   return (
@@ -18,6 +19,7 @@ function Pages() {
           path="/meals/ingredients/:ingredient"
           element={<IngredientsPage />}
         />
+        <Route path="/favorites/" element={<FavoritesPage />} />
         <Route path="*" element={<PageNotFound />}></Route>
         <Route path="/meal/:idMeal" element={<MealPage />} />
       </Routes>

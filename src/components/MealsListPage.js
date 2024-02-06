@@ -15,7 +15,7 @@ function MealsListPage({ category, meals }) {
           <div className="row row-gap-5 gap-5">
             {meals ? (
               meals.map((meal) => (
-                <div key={meal.idMeal} className="col-2">
+                <div key={meal.idMeal} className="col-lg-2 col-md-4 col-sm-6">
                   <Link
                     to={`/meal/${encodeURIComponent(meal.idMeal)}`}
                     style={{ color: "inherit", textDecoration: "none" }}
