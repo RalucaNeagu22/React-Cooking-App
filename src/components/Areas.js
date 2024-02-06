@@ -27,7 +27,7 @@ function Areas() {
       <div className="btn-group">
         <button
           ref={areasRef}
-          className="btn btn-secondary btn-lg dropdown-toggle"
+          className="btn btn-secondary btn dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
-import FilterBar from "../components/FilterBar";
+import MealsListPage from "../components/MealsListPage";
 
 function MealsPage() {
   const { category } = useParams();
@@ -34,37 +32,7 @@ function MealsPage() {
     }
   };
 
-  return (
-    <div>
-      <Navbar />
-      <div className="d-flex">
-        <FilterBar />
-        <h2>{category}</h2>
-        <div className="container row">
-          {meals ? (
-            meals.map((meal) => (
-              <Link to={`/meal/${encodeURIComponent(meal.idMeal)}`}>
-                <div
-                  key={meal.idMeal}
-                  className="col-3 d-flex flex-column gap-2"
-                >
-                  <h3>{meal.strMeal}</h3>
-                  <img
-                    src={meal.strMealThumb}
-                    alt={meal.strMeal}
-                    className="d-flex align-items-end"
-                    style={{ width: "200px" }}
-                  />
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p>No meals found for {category}</p>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  return <MealsListPage category={category} meals={meals} />;
 }
 
 export default MealsPage;

@@ -4,6 +4,24 @@ import Navbar from "../components/Navbar";
 import FilterBar from "../components/FilterBar";
 import YouTube from "react-youtube";
 
+const buttonStyle = {
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  borderRadius: "50%",
+  marginRight: "10px",
+};
+
+const heartIconStyle = {
+  fontSize: "18px",
+  marginRight: "5px",
+};
+
+const handleClick = () => {
+  // Handle button click logic
+  console.log("Button clicked!");
+};
+
 function MealPage() {
   const { idMeal } = useParams();
   const [meal, setMeal] = useState(null);
@@ -45,6 +63,20 @@ function MealPage() {
                   <div className="d-flex gap-4">
                     <p className="fw-bold">{meal.strCategory}</p>
                     <p className="fw-bold">{meal.strArea}</p>
+                    <div>
+                      <button style={buttonStyle} onClick={handleClick}>
+                        <span
+                          role="img"
+                          aria-label="Heart"
+                          style={heartIconStyle}
+                        >
+                          ❤️
+                        </span>
+                        <span style={{ fontWeight: "bold" }}>
+                          Add to Favorites
+                        </span>
+                      </button>
+                    </div>
                   </div>
                   <img
                     src={meal.strMealThumb}
@@ -54,7 +86,7 @@ function MealPage() {
                   />
                 </div>
 
-                <div className="d-flex flex-column align-self-end">
+                <div className="m-auto mt-5">
                   {meal.strYoutube && (
                     <YouTube videoId={meal.strYoutube.split("v=")[1]} />
                   )}

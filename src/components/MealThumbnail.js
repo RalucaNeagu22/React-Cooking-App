@@ -5,12 +5,11 @@ function MealThumbnail({ recipe }) {
     <div className="d-flex flex-column">
       <img
         src={recipe.strMealThumb}
-        className="rounded-circle img-thumbnail mt-1"
-        style={{ width: "150px" }}
+        className="rounded-circle mt-1 img-fluid m-auto mx-3 my-3"
         alt={recipe.strMeal}
       />
       <p
-        className="mx-3 my-2 rounded-pill bg-secondary text-white"
+        className="mx-5 rounded-pill bg-secondary text-white"
         style={{ textAlign: "center" }}
       >
         {recipe.strArea}

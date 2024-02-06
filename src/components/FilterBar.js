@@ -7,7 +7,7 @@ import React from "react";
 function FilterBar() {
   return (
     <div>
-      <div className="d-flex flex-column gap-4">
+      <div className="d-flex flex-column gap-4 mx-5 my-5">
         <Categories />
         <Areas />
         <Ingredients />

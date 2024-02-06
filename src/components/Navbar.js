@@ -38,39 +38,33 @@ function Navbar({ setSearchResults }) {
   return (
     <div>
       <div className="p-3 text-bg-dark mb-5">
-        <div className="container">
-          <div className="row align-items-center">
+        <div className="row">
+          <div className="col-3 text-center">
             <Link to={"/"}>
-              <div className="col">
-                <img
-                  src={logo}
-                  style={{ width: "60px" }}
-                  alt="Company Logo"
-                  className="mx-5"
-                />
-              </div>
+              <img src={logo} alt="Company Logo" style={{ width: "50px" }} />
             </Link>
-            <div className="col-auto">
-              <form
-                onChange={handleSearch}
-                onSubmit={handleSearch}
-                className="mb-3 mb-lg-0"
-              >
-                <label htmlFor="search" className="visually-hidden">
-                  Search
-                </label>
-                <input
-                  type="search"
-                  id="search"
-                  className="form-control form-control-lg form-control-dark text-bg-dark"
-                  placeholder="Search..."
-                  aria-label="Search"
-                  style={{ minWidth: "500px" }}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </form>
-            </div>
+          </div>
+
+          <div className="col-7">
+            <form
+              onChange={handleSearch}
+              onSubmit={handleSearch}
+              className="mb-3 mb-lg-0"
+            >
+              <label htmlFor="search" className="visually-hidden">
+                Search
+              </label>
+              <input
+                type="search"
+                id="search"
+                className="form-control form-control-lg form-control-dark text-bg-dark"
+                placeholder="Search..."
+                aria-label="Search"
+                style={{ minWidth: "500px" }}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </form>
           </div>
         </div>
       </div>

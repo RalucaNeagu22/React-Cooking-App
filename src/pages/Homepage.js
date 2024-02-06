@@ -37,6 +37,7 @@ function Homepage() {
     }
   };
 
+  console.log(searchResults);
   return (
     <div>
       <Navbar setSearchResults={setSearchResults} />
@@ -45,6 +46,7 @@ function Homepage() {
         <Meals
           meals={searchResults.length > 0 ? searchResults : random}
           sliderMeals={random}
+          isRandom={searchResults.length === 0}
         />
       </div>
     </div>
