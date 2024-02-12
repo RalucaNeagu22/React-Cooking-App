@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.3d9ac1fa.css",
-    "main.js": "/static/js/main.ca49c37a.js",
-    "static/media/logo.jpg": "/static/media/logo.69671c828875678f0ce6.jpg",
-    "index.html": "/index.html",
-    "main.3d9ac1fa.css.map": "/static/css/main.3d9ac1fa.css.map",
-    "main.ca49c37a.js.map": "/static/js/main.ca49c37a.js.map"
+    "main.css": "/React-Cooking-App/static/css/main.3d9ac1fa.css",
+    "main.js": "/React-Cooking-App/static/js/main.af67f320.js",
+    "static/media/logo.jpg": "/React-Cooking-App/static/media/logo.69671c828875678f0ce6.jpg",
+    "index.html": "/React-Cooking-App/index.html",
+    "main.3d9ac1fa.css.map": "/React-Cooking-App/static/css/main.3d9ac1fa.css.map",
+    "main.af67f320.js.map": "/React-Cooking-App/static/js/main.af67f320.js.map"
   },
   "entrypoints": [
     "static/css/main.3d9ac1fa.css",
-    "static/js/main.ca49c37a.js"
+    "static/js/main.af67f320.js"
   ]
 }
