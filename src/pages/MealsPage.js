@@ -19,12 +19,9 @@ function MealsPage() {
       );
       const data = await response.json();
 
-      // Verificăm dacă avem o proprietate 'meals' și dacă nu este null
       if (data.meals !== null) {
-        // Meals found, set the state
         setMeals(data.meals);
       } else {
-        // No meals found for the specified category
         setMeals([]);
       }
     } catch (error) {
